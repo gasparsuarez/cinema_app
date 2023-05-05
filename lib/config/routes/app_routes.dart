@@ -9,5 +9,17 @@ final GoRouter routerLinks = GoRouter(initialLocation: '/', routes: [
     builder: (context, state) {
       return const HomeScreen();
     },
-  )
+    routes: [
+      GoRoute(
+        name: MovieScreen.routeName,
+        path: 'movie/:id',
+        builder: (context, state) {
+          final movieId = state.params['id'] ?? 'no-id';
+          return MovieScreen(
+            movieId: movieId,
+          );
+        },
+      )
+    ],
+  ),
 ]);
